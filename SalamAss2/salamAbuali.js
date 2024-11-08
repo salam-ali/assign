@@ -44,7 +44,8 @@ document.getElementById('quizForm').addEventListener('submit', function(event) {
     const question2 = document.querySelectorAll('input[name="question2"]:checked');
     const selectedAnswers = Array.from(question2).map(el => el.value);
     const correctAnswers = ["Marie Curie", "Albert Einstein"];
-    if (selectedAnswers.length === 0 || !correctAnswers.every(ans => selectedAnswers.includes(ans))) {
+    if (selectedAnswers.length > 0 && !correctAnswers.every(ans => selectedAnswers.includes(ans))) {
+        // Validate only if there's an answer selected and it's incorrect
         document.getElementById('question2Error').textContent = 'Incorrect choices. Try again!';
         errors = true;
     } else {
